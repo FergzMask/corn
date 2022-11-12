@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ChilliWacky Corn!</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+    <link rel=stylesheet href="normalize-fwd.css">
+    <link rel=stylesheet href="corn.css">
+    <link rel="apple-touch-icon-precomposed" sizes="57x57" href="./favicon/apple-touch-icon-57x57.png" />
+    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="./favicon/apple-touch-icon-114x114.png" />
+    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="./favicon/apple-touch-icon-72x72.png" />
+    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="./favicon/apple-touch-icon-144x144.png" />
+    <link rel="apple-touch-icon-precomposed" sizes="60x60" href="./favicon/apple-touch-icon-60x60.png" />
+    <link rel="apple-touch-icon-precomposed" sizes="120x120" href="./favicon/apple-touch-icon-120x120.png" />
+    <link rel="apple-touch-icon-precomposed" sizes="76x76" href="./favicon/apple-touch-icon-76x76.png" />
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="./favicon/apple-touch-icon-152x152.png" />
+    <link rel="icon" type="image/png" href="./favicon/favicon-196x196.png" sizes="196x196" />
+    <link rel="icon" type="image/png" href="./favicon/favicon-96x96.png" sizes="96x96" />
+    <link rel="icon" type="image/png" href="./favicon/favicon-32x32.png" sizes="32x32" />
+    <link rel="icon" type="image/png" href="./favicon/favicon-16x16.png" sizes="16x16" />
+    <link rel="icon" type="image/png" href="./favicon/favicon-128.png" sizes="128x128" />
+    <meta name="application-name" content="&nbsp;"/>
+    <meta name="msapplication-TileColor" content="#FFFFFF" />
+    <meta name="msapplication-TileImage" content="mstile-144x144.png" />
+    <meta name="msapplication-square70x70logo" content="mstile-70x70.png" />
+    <meta name="msapplication-square150x150logo" content="mstile-150x150.png" />
+    <meta name="msapplication-wide310x150logo" content="mstile-310x150.png" />
+    <meta name="msapplication-square310x310logo" content="mstile-310x310.png" />
+    
+</head>
+
+<body>
+    <div id="game-container">
+        <header>
+            <h1>Welcome to ChilliWacky Corn!</h1>
+        </header>
+
+        <main>                  
+            <img alt="large corn cob over top of corn plants, growing in front of mountain" id="corn" src="corn.jpg">
+            <div class="screen" id="opening">
+                <p>Thank you for coming to visit the farm today!  I could  really use a hand - if you don't mind! Farmer Fox left his notes somewhere to plan for the crops and we can't find them!  He's away for the weekend and we need to get these crops planted by tomorrow or there won't be a corn season!  We've heard you have some experience with planning crops - do you think you could help us?  Here is the Almanac.  I had seen Farmer Fox's plan and if you can jog my memory, I'll be able to tell you if your plan is correct!</p>  
+                
+                <p>If you could please enter your name here so we can print you a nametag, we can get started:</p>
+
+                <input type="text" name="name" id="name" value="Farmer">
+
+                <p>I don't mean to rush you but we ARE in a hurry.  How many guesses do you think you'll need?  As long as we get this sorted in the next few hours, we'll be fine - but maybe you like a challenge?</p>
+                    <div id="guess">
+                        <div id="difficulty">
+                            <fieldset>
+                            
+                                <legend>Guesses</legend>
+                                
+                                <label for="attempts">Attempts:</label>
+                                
+                                <div id="radio-easy">
+                                <input type="radio" name="attempts" id="easy" checked>
+                                <label for="easy">8 Guesses - Easy</label></div>
+                                <div id="radio-med">
+                                <input type="radio" name="attempts" id="medium">
+                                <label for="medium">7 Guesses - Medium</label></div>
+                                <div id="radio-hard">
+                                <input type="radio" name="attempts" id="hard">
+                                <label for="hard">6 Guesses - Hard</label></div>
+                                
+                            </fieldset>
+                    
+                            <input type="submit" value="Start Game" class="button" id="startButton">
+                        </div>
+                    </div>
+            </div>
+
+            <div class="screen" id="game">
+                <button id="modal-button">Help</button>
+                    <div id="modal">
+                        <div class="modal-help">
+                            <span id="close">close &times;</span>
+                            <p>Instructions:</p>
+                            <p>Use the dropdown menus to choose your guess for the days until germination, hours of watering per day, different types of fertilizers and how many days of weeding will be required to grow the corn crop.  When you have finalized your guess, press submit to check your answer.</p>
+                        </div>
+                    </div>
+                <p>Alright - let's get started! Here is the Almanac.  Please let us know the following:</p>
+                <ul>
+                    <li>How many days until the seeds germinate?</li>
+                    <li>How many hours of watering per day?</li>
+                    <li>How many different types of fertilizer will be used?</li>
+                    <li>How many days we'll need to weed?</li>
+                </ul>
+
+                <p>That's it, <span id="playerNameDisplay"></span>!  You can enter your guesses whenever you're ready - we'll keep track of them for you below.  Ok - we're off to get the equipment prepared!  Thank you for your help!</p>
+                    <div id="guesses">
+                        <p id="guessNumber">Guesses left:
+                            <span id="difficultyDisplay"></span>
+                        </p>
+                        
+                        <table class="dropdowns">
+                        <div id="germ">
+                            <tr>
+                            <td class="dropdowns center"><label for="germination">Days until germination</label></td>
+                            <td class="dropdowns"><select name="germination" id="germination">
+                                <option value>Please select</option>                       
+                                <option value="1">1</option>
+                                <option value="2">2</option>
+                                <option value="3">3</option>
+                                <option value="4">4</option>
+                                <option value="5">5</option>
+                                <option value="6">6</option>
+                            </select></td>
+                            </tr>
+                        </div>
+
+                        <div id="water">
+                            <tr>
+                            <td class="center"><label for="watering">Hours of watering per day</label></td>
+                            <td><select name="watering" id="watering">
+                                <option value>Please select</option>                        
+                                <option value="1">1</option>
+                                <option value="2">2</option>
+                                <option value="3">3</option>
+                                <option value="4">4</option>
+                                <option value="5">5</option>
+                                <option value="6">6</option>
+                            </select></td>
+                        
+                            </tr>
+                        </div>
+
+                        <div id="fert">
+                            <tr>
+
+                            <td class="center"><label for="fertilize">Different types of fertilizer</label></td>
+                            <td><select name="fertilize" id="fertilize">
+                                <option value>Please select</option>                        
+                                <option value="1">1</option>
+                                <option value="2">2</option>
+                                <option value="3">3</option>
+                                <option value="4">4</option>
+                                <option value="5">5</option>
+                                <option value="6">6</option>
+                            </select></td>
+                            </tr>
+                        </div>
+
+                        <div id="weed">
+                            <tr><td class="center"><label for="weeding">Days of weeding</label></td>
+                            <td><select name="weeding" id="weeding">
+                                <option value>Please select</option>                        
+                                <option value="1">1</option>
+                                <option value="2">2</option>
+                                <option value="3">3</option>
+                                <option value="4">4</option>
+                                <option value="5">5</option>
+                                <option value="6">6</option>
+                            </select></td>
+                        </tr>
+                        </div>
+                        </table>
+
+                        <input type="submit" value="Submit" class="button" id="submitButton">
+                    </div>
+
+                <table>
+                    <thead>
+                        <tr id="results" class="results">
+                            <th class="results">Days until germination</th>
+                            <th class="results">Hours of watering per day</th>
+                            <th class="results">Fertilizer types</th>
+                            <th class="results">Days of weeding</th>
+                        </tr>
+                    </thead>
+                    <tbody id="tbody">
+                        <tr id="homerow"></tr>
+
+                    </tbody>                   
+                </table>
+                
+            </div>
+
+            <div class="screen" id="game-over">
+                <p id="finalmessage"></p>
+                <input type="submit" value="Try Again" class="button" id="tryAgain">
+                <input type="submit" value="End Game" class="button" id="endGame">
+            </div>
+
+        
+        </main>
+        <footer>
+            <hr>
+            <p>Corn header image created using <a href="craiyon.com">Craiyon</a>.  Game created by <a href="mailto:shancock4@my.bcit.ca">Sarah Hancock</a> - 2022.</p>
+        </footer>
+    </div>
+
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+   <!-- JavaScript Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
+    <script src="corn.js"></script>
+</body>
+</html>
